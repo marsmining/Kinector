@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */; };
+		FCDC2FC515ED0B8F00F8A14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */; };
+		FCDC2FC715ED0B8F00F8A14A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FC615ED0B8F00F8A14A /* main.m */; };
+		FCDC2FCB15ED0B8F00F8A14A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FC915ED0B8F00F8A14A /* Credits.rtf */; };
+		FCDC2FCE15ED0B8F00F8A14A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */; };
+		FCDC2FD115ED0B8F00F8A14A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FCDC2FB615ED0B8F00F8A14A /* Kinector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FCDC2FBD15ED0B8F00F8A14A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FCDC2FBE15ED0B8F00F8A14A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FCDC2FBF15ED0B8F00F8A14A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FCDC2FC215ED0B8F00F8A14A /* Kinector-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kinector-Info.plist"; sourceTree = "<group>"; };
+		FCDC2FC415ED0B8F00F8A14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FCDC2FC615ED0B8F00F8A14A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FCDC2FC815ED0B8F00F8A14A /* Kinector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kinector-Prefix.pch"; sourceTree = "<group>"; };
+		FCDC2FCA15ED0B8F00F8A14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FCDC2FCC15ED0B8F00F8A14A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FCDC2FD015ED0B8F00F8A14A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCDC2FB315ED0B8F00F8A14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FCDC2FAB15ED0B8F00F8A14A = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FC015ED0B8F00F8A14A /* Kinector */,
+				FCDC2FB915ED0B8F00F8A14A /* Frameworks */,
+				FCDC2FB715ED0B8F00F8A14A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FCDC2FB715ED0B8F00F8A14A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FB615ED0B8F00F8A14A /* Kinector.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCDC2FB915ED0B8F00F8A14A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */,
+				FCDC2FBC15ED0B8F00F8A14A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCDC2FBC15ED0B8F00F8A14A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FBD15ED0B8F00F8A14A /* AppKit.framework */,
+				FCDC2FBE15ED0B8F00F8A14A /* CoreData.framework */,
+				FCDC2FBF15ED0B8F00F8A14A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FCDC2FC015ED0B8F00F8A14A /* Kinector */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FCC15ED0B8F00F8A14A /* AppDelegate.h */,
+				FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */,
+				FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */,
+				FCDC2FC115ED0B8F00F8A14A /* Supporting Files */,
+			);
+			path = Kinector;
+			sourceTree = "<group>";
+		};
+		FCDC2FC115ED0B8F00F8A14A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC2FC215ED0B8F00F8A14A /* Kinector-Info.plist */,
+				FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */,
+				FCDC2FC615ED0B8F00F8A14A /* main.m */,
+				FCDC2FC815ED0B8F00F8A14A /* Kinector-Prefix.pch */,
+				FCDC2FC915ED0B8F00F8A14A /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCDC2FB515ED0B8F00F8A14A /* Kinector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCDC2FD415ED0B8F00F8A14A /* Build configuration list for PBXNativeTarget "Kinector" */;
+			buildPhases = (
+				FCDC2FB215ED0B8F00F8A14A /* Sources */,
+				FCDC2FB315ED0B8F00F8A14A /* Frameworks */,
+				FCDC2FB415ED0B8F00F8A14A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kinector;
+			productName = Kinector;
+			productReference = FCDC2FB615ED0B8F00F8A14A /* Kinector.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCDC2FAD15ED0B8F00F8A14A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Ockham Solutions GmbH";
+			};
+			buildConfigurationList = FCDC2FB015ED0B8F00F8A14A /* Build configuration list for PBXProject "Kinector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FCDC2FAB15ED0B8F00F8A14A;
+			productRefGroup = FCDC2FB715ED0B8F00F8A14A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCDC2FB515ED0B8F00F8A14A /* Kinector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCDC2FB415ED0B8F00F8A14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCDC2FC515ED0B8F00F8A14A /* InfoPlist.strings in Resources */,
+				FCDC2FCB15ED0B8F00F8A14A /* Credits.rtf in Resources */,
+				FCDC2FD115ED0B8F00F8A14A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCDC2FB215ED0B8F00F8A14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCDC2FC715ED0B8F00F8A14A /* main.m in Sources */,
+				FCDC2FCE15ED0B8F00F8A14A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCDC2FC415ED0B8F00F8A14A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FCDC2FC915ED0B8F00F8A14A /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCDC2FCA15ED0B8F00F8A14A /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCDC2FD015ED0B8F00F8A14A /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FCDC2FD215ED0B8F00F8A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FCDC2FD315ED0B8F00F8A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FCDC2FD515ED0B8F00F8A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kinector/Kinector-Prefix.pch";
+				INFOPLIST_FILE = "Kinector/Kinector-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FCDC2FD615ED0B8F00F8A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kinector/Kinector-Prefix.pch";
+				INFOPLIST_FILE = "Kinector/Kinector-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCDC2FB015ED0B8F00F8A14A /* Build configuration list for PBXProject "Kinector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCDC2FD215ED0B8F00F8A14A /* Debug */,
+				FCDC2FD315ED0B8F00F8A14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCDC2FD415ED0B8F00F8A14A /* Build configuration list for PBXNativeTarget "Kinector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCDC2FD515ED0B8F00F8A14A /* Debug */,
+				FCDC2FD615ED0B8F00F8A14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCDC2FAD15ED0B8F00F8A14A /* Project object */;
+}
