@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <OpenGL/OpenGL.h>
+#import "KinectorProtocols.h"
 
-@interface Renderer : NSObject
+@interface Renderer : NSObject <RenderDelegate>
+
+- (id) initWithDelegate:(id)adel;
 
 - (void) render;
 
 - (void) resizeWithWidth:(GLuint)width AndHeight:(GLuint)height;
+
+@property (nonatomic, weak) id <KinectBufferDelegate> delegate;
 
 @end

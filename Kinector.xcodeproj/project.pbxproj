@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FCABF65C15EE89A500584A4F /* KinectorProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectorProtocols.h; sourceTree = "<group>"; };
 		FCDC2FB615ED0B8F00F8A14A /* Kinector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FCDC2FBD15ED0B8F00F8A14A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,12 +120,13 @@
 				FCDC2FE215ED0BCC00F8A14A /* timing.h */,
 				FCDC2FD715ED0BAE00F8A14A /* Kinect.h */,
 				FCDC2FD815ED0BAE00F8A14A /* Kinect.m */,
-				FCDC2FCC15ED0B8F00F8A14A /* AppDelegate.h */,
-				FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */,
 				FCDC2FDB15ED0BCC00F8A14A /* MainWindowController.h */,
 				FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */,
+				FCDC2FCC15ED0B8F00F8A14A /* AppDelegate.h */,
+				FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */,
 				FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */,
 				FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */,
+				FCABF65C15EE89A500584A4F /* KinectorProtocols.h */,
 				FCDC2FC115ED0B8F00F8A14A /* Supporting Files */,
 			);
 			path = Kinector;

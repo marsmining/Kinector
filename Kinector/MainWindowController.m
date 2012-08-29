@@ -13,28 +13,34 @@
  */
 @implementation MainWindowController
 
-// our gl view
 @synthesize glView = _glView;
-
-// kinect instance
 @synthesize kinect = _kinect;
+@synthesize renderer = _renderer;
 
-BOOL kinectContextIsOpen = NO;
-BOOL kinectDepthIsOpen = NO;
+- (uint8_t *) getDepthBuffer {
+    NSLog(@"MainWindowController - getDepthBuffer");
+    
+    return [self.kinect getDepthBuffer];
+}
+
+- (Kinect *) kinect {
+    if (!_kinect)
+        _kinect = [[Kinect alloc] init];
+    return _kinect;
+}
+
+- (Renderer *) renderer {
+    if (!_renderer)
+        _renderer = [[Renderer alloc] initWithDelegate:self];
+    return _renderer;
+}
 
 - (id) init
 {
     self = [super initWithWindowNibName:@"MainWindow"];
     
     if (self) {        
-        
-        // create and init kinect object
-        
-        //    self.kinect = [[Kinect alloc] init];
-        //    kinectContextIsOpen = [self.kinect openDevice];
-        //    kinectDepthIsOpen = [self.kinect openDepth];
-        
-        // create draw loop
+        // code
     }
     return self;
 }
@@ -44,19 +50,15 @@ BOOL kinectDepthIsOpen = NO;
     [super windowDidLoad];
 
     // code
+    self.glView.renderer = self.renderer;
 }
 
 - (void) stop
 {
     NSLog(@"stop");
     
-    if (kinectDepthIsOpen) {
-        NSLog(@"result from closing depth is: %d", [self.kinect closeDepth]);
-    }
-    
-    if (kinectContextIsOpen) {
-        NSLog(@"result from closing device is: %d", [self.kinect closeDevice]);
-    }
+    [self.kinect stop];
+    [self.glView stop];
 }
 
 - (IBAction) toggleDisplay:(NSButton *)sender {
@@ -74,6 +76,13 @@ BOOL kinectDepthIsOpen = NO;
 - (IBAction)toggleKinect:(NSButton *)sender {
     NSLog(@"toggleKinect");
 
+    if (self.kinect.isRunning) {
+        [self.kinect stop];
+        sender.title = @"Start Kinect";
+    } else {
+        [self.kinect start];
+        sender.title = @"Stop Kinect";
+    }
 }
 
 @end

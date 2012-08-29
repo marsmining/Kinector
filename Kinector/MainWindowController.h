@@ -9,12 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "SimpleGLView.h"
 #import "Kinect.h"
+#import "Renderer.h"
 
-@interface MainWindowController : NSWindowController
+@interface MainWindowController : NSWindowController <KinectBufferDelegate>
 
 @property (weak) IBOutlet SimpleGLView *glView;
-
 @property (nonatomic, strong) Kinect *kinect;
+@property (nonatomic, strong) Renderer *renderer;
 
 - (void) stop;
 

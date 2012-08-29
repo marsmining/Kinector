@@ -10,14 +10,12 @@
 
 @interface Kinect : NSObject
 
-- (BOOL) openDevice;
-
-- (BOOL) closeDevice;
-
-- (BOOL) openDepth;
-
-- (BOOL) closeDepth;
+- (void) start;
 
 - (void) stop;
+
+- (BOOL) isRunning;
+
+- (uint8_t *) getDepthBuffer;
 
 @end

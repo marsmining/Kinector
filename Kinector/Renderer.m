@@ -14,7 +14,6 @@
 GLuint _width = 0;
 GLuint _height = 0;
 GLuint _tex;
-uint8_t *depth_mid;
 
 static GLint vertices[] = {
     25, 25,
@@ -32,6 +31,8 @@ static GLfloat colors[] = {
     0.35, 0.35, 0.35,
     0.5, 0.5, 0.5};
 
+@synthesize delegate = _delegate;
+
 /**
  * Render the buffer owned by the Kinect object.
  */
@@ -39,7 +40,7 @@ static GLfloat colors[] = {
     
     // fps calculation
     
-    NSLog(@"fps: %3.1f", timtick());
+    NSLog(@"Renderer - render - fps: %3.1f", timtick());
     
     // render
     
@@ -47,15 +48,17 @@ static GLfloat colors[] = {
     
     glBindTexture(GL_TEXTURE_2D, _tex);
     
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, 640, 480, 0, GL_RGB, GL_UNSIGNED_BYTE, depth_mid);
-    
-    glBegin(GL_TRIANGLE_FAN);
-    glColor4f(1.0f, 0.7f, 1.0f, 0.0f);
-    glTexCoord2f(0, 0); glVertex3f(0,0,0);
-    glTexCoord2f(1, 0); glVertex3f(640,0,0);
-    glTexCoord2f(1, 1); glVertex3f(640,480,0);
-    glTexCoord2f(0, 1); glVertex3f(0,480,0);
-    glEnd();
+    if (self.delegate) {
+        glTexImage2D(GL_TEXTURE_2D, 0, 3, 640, 480, 0, GL_RGB, GL_UNSIGNED_BYTE, [self.delegate getDepthBuffer]);
+        
+        glBegin(GL_TRIANGLE_FAN);
+        glColor4f(1.0f, 0.7f, 1.0f, 0.0f);
+        glTexCoord2f(0, 0); glVertex3f(0,0,0);
+        glTexCoord2f(1, 0); glVertex3f(640,0,0);
+        glTexCoord2f(1, 1); glVertex3f(640,480,0);
+        glTexCoord2f(0, 1); glVertex3f(0,480,0);
+        glEnd();
+    }
     
     glColor3f(1.0f, 0.0f, 0.0f);
     
@@ -85,9 +88,11 @@ static GLfloat colors[] = {
 
 }
 
-- (id) init {
+- (id) initWithDelegate:(id)adel {
     
 	if((self = [super init])) {
+        
+        self.delegate = adel;
         
         timinit();
         
@@ -122,13 +127,13 @@ static GLfloat colors[] = {
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        depth_mid = (uint8_t*)malloc(640*480*3);
-        
-        for (int i=0; i<640*480; i++) {
-            depth_mid[3*i+0] = 153;
-            depth_mid[3*i+1] = 204;
-            depth_mid[3*i+2] = 255;
-        }
+//        depth_mid = (uint8_t*)malloc(640*480*3);
+//        
+//        for (int i=0; i<640*480; i++) {
+//            depth_mid[3*i+0] = 153;
+//            depth_mid[3*i+1] = 204;
+//            depth_mid[3*i+2] = 255;
+//        }
 	}
 	
 	return self;
@@ -140,11 +145,6 @@ static GLfloat colors[] = {
 	
 	_width = width;
 	_height = height;
-}
-
-- (void) dealloc {
-    NSLog(@"dealloc called");
-    free(depth_mid);
 }
 
 @end

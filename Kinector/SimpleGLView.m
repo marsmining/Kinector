@@ -8,7 +8,7 @@
 
 #import "SimpleGLView.h"
 
-@interface SimpleGLView (PrivateMethods)
+@interface SimpleGLView ()
 
 - (void) initGL;
 - (void) drawView;
@@ -94,6 +94,8 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
 }
 
 - (void) prepareOpenGL {
+    NSLog(@"SimpleGLView - prepareOpenGL");
+
 	[super prepareOpenGL];
 	
 	// Make all the OpenGL calls to setup rendering
@@ -121,9 +123,6 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
 	// Synchronize buffer swaps with vertical refresh rate
 	GLint swapInt = 1;
 	[[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
-	
-	// Init our renderer.
-	self.renderer = [[Renderer alloc] init];
 }
 
 - (void) reshape

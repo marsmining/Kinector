@@ -8,15 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/CVDisplayLink.h>
-#import "Renderer.h"
+#import "KinectorProtocols.h"
 
 @interface SimpleGLView : NSOpenGLView {
 
     CVDisplayLinkRef displayLink;
-
 }
 
-@property (nonatomic, strong) Renderer* renderer;
+@property (nonatomic, strong) id <RenderDelegate> renderer;
 
 - (void) start;
 

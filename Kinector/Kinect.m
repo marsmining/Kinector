@@ -46,10 +46,22 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
     }
 }
 
+BOOL kinectContextIsOpen = NO;
+BOOL kinectDepthIsOpen = NO;
+
 /**
  * Interface
  */
 @interface Kinect()
+
+- (BOOL) openDevice;
+
+- (BOOL) closeDevice;
+
+- (BOOL) openDepth;
+
+- (BOOL) closeDepth;
+
 @end
 
 /**
@@ -57,8 +69,38 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
  */
 @implementation Kinect
 
+- (BOOL) isRunning {
+    return kinectDepthIsOpen || kinectContextIsOpen;
+}
+
+/**
+ * Get pointer to depth buffer.
+ */
+- (uint8_t *) getDepthBuffer {
+    NSLog(@"Kinect - unlockDepthBuffer");
+    
+    return depth_mid;
+}
+
+- (void) start {
+    NSLog(@"Kinect - start");
+    
+    kinectContextIsOpen = [self openDevice];
+    kinectDepthIsOpen = [self openDepth];
+}
+
 - (void) stop {
+    NSLog(@"Kinect - stop");
+
     die = 1;
+    
+    if (kinectDepthIsOpen) {
+        NSLog(@"result from closing depth is: %d", [self closeDepth]);
+    }
+    
+    if (kinectContextIsOpen) {
+        NSLog(@"result from closing device is: %d", [self closeDevice]);
+    }
 }
 
 - (void) depthLoop {
@@ -74,13 +116,13 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
 - (BOOL) closeDepth {
     NSLog(@"closeDepth");
     
-    [self stop];
-
     // stop depth
     freenect_stop_depth(f_dev);
     
     // free buffer
     free(depth_mid);
+    
+    kinectDepthIsOpen = NO;
     
     return YES;
 }
@@ -111,6 +153,8 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
     // close device and context
     freenect_close_device(f_dev);
     freenect_shutdown(f_ctx);
+    
+    kinectContextIsOpen = NO;
     
     return YES;
 }
