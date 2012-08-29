@@ -19,17 +19,23 @@
 
 @synthesize renderer = _renderer;
 
+/**
+ * Just delegate to 'drawView'.
+ */
 - (CVReturn) getFrameForTime:(const CVTimeStamp*)outputTime {
 	[self drawView];
 	return kCVReturnSuccess;
 }
 
-//
-// renderer output callback function
-//
-static CVReturn dlc(CVDisplayLinkRef displayLink, const CVTimeStamp* now,
-                    const CVTimeStamp* outputTime, CVOptionFlags flagsIn,
-                    CVOptionFlags* flagsOut, void* displayLinkContext)
+/**
+ * Display link callback function
+ */
+static CVReturn dlc(CVDisplayLinkRef displayLink,
+                    const CVTimeStamp* now,
+                    const CVTimeStamp* outputTime,
+                    CVOptionFlags flagsIn,
+                    CVOptionFlags* flagsOut,
+                    void* displayLinkContext)
 {
     NSLog(@"callback invoked..");
     
@@ -38,33 +44,43 @@ static CVReturn dlc(CVDisplayLinkRef displayLink, const CVTimeStamp* now,
     return result;
 }
 
+/**
+ * Start display link thread loop.
+ */
 - (void) start
 {
-    NSLog(@"start");
+    NSLog(@"SimpleGLView - start");
     
     // start the link
 	CVDisplayLinkStart(displayLink);
 }
 
+/**
+ * Stop the loop.
+ */
 - (void) stop
 {
-    NSLog(@"stop");
+    NSLog(@"SimpleGLView - stop");
     
     // stop the link
     CVDisplayLinkStop(displayLink);
 }
 
+/**
+ * Public status method.
+ */
 - (BOOL) isRunning {
     return CVDisplayLinkIsRunning(displayLink);
 }
 
+/**
+ * Initial setup.
+ */
 - (void) awakeFromNib {
+    NSLog(@"SimpleGLView - awakeFromNib");
+    
     NSOpenGLPixelFormatAttribute attrs[] = {
-		NSOpenGLPFADoubleBuffer,
-		NSOpenGLPFADepthSize, 24,
-		NSOpenGLPFAOpenGLProfile,
-		NSOpenGLProfileVersion3_2Core,
-		0
+        // setup attrs here, none for now
 	};
 	
 	NSOpenGLPixelFormat *pf = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
@@ -134,9 +150,9 @@ static CVReturn dlc(CVDisplayLinkRef displayLink, const CVTimeStamp* now,
 	// When resizing the view, -reshape is called automatically on the main thread
 	// Add a mutex around to avoid the threads accessing the context simultaneously	when resizing
 	CGLLockContext([[self openGLContext] CGLContextObj]);
-	
+
 	[self.renderer render];
-	
+    	
 	CGLFlushDrawable([[self openGLContext] CGLContextObj]);
 	CGLUnlockContext([[self openGLContext] CGLContextObj]);
 }

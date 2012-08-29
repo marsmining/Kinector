@@ -20,6 +20,10 @@ freenect_device *f_dev;
 
 int depthCallbacks = 0;
 
+//
+// c-lang functions for libfreenect callbacks
+//
+
 void logcb(freenect_context *ctx, freenect_loglevel level, const char *msg) {
     NSLog(@"recieved msg: %s", msg);
 }
