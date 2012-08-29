@@ -16,7 +16,7 @@
 		FCDC2FD915ED0BAE00F8A14A /* Kinect.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FD815ED0BAE00F8A14A /* Kinect.m */; };
 		FCDC2FE315ED0BCC00F8A14A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */; };
 		FCDC2FE415ED0BCC00F8A14A /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */; };
-		FCDC2FE515ED0BCC00F8A14A /* NSGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDE15ED0BCC00F8A14A /* NSGLView.m */; };
+		FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */; };
 		FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FE015ED0BCC00F8A14A /* Renderer.m */; };
 		FCDC2FE715ED0BCC00F8A14A /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FE115ED0BCC00F8A14A /* timing.c */; };
 		FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */; };
@@ -43,8 +43,8 @@
 		FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		FCDC2FDB15ED0BCC00F8A14A /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
-		FCDC2FDD15ED0BCC00F8A14A /* NSGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSGLView.h; sourceTree = "<group>"; };
-		FCDC2FDE15ED0BCC00F8A14A /* NSGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSGLView.m; sourceTree = "<group>"; };
+		FCDC2FDD15ED0BCC00F8A14A /* SimpleGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGLView.h; sourceTree = "<group>"; };
+		FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleGLView.m; sourceTree = "<group>"; };
 		FCDC2FDF15ED0BCC00F8A14A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		FCDC2FE015ED0BCC00F8A14A /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		FCDC2FE115ED0BCC00F8A14A /* timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
@@ -72,10 +72,8 @@
 		FCDC2FAB15ED0B8F00F8A14A = {
 			isa = PBXGroup;
 			children = (
-				FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */,
-				FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */,
-				FCDC2FEA15ED156300F8A14A /* libs */,
 				FCDC2FC015ED0B8F00F8A14A /* Kinector */,
+				FCDC2FEA15ED156300F8A14A /* libs */,
 				FCDC2FB915ED0B8F00F8A14A /* Frameworks */,
 				FCDC2FB715ED0B8F00F8A14A /* Products */,
 			);
@@ -92,6 +90,8 @@
 		FCDC2FB915ED0B8F00F8A14A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */,
+				FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */,
 				FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */,
 				FCDC2FBC15ED0B8F00F8A14A /* Other Frameworks */,
 			);
@@ -111,11 +111,8 @@
 		FCDC2FC015ED0B8F00F8A14A /* Kinector */ = {
 			isa = PBXGroup;
 			children = (
-				FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */,
-				FCDC2FDB15ED0BCC00F8A14A /* MainWindowController.h */,
-				FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */,
-				FCDC2FDD15ED0BCC00F8A14A /* NSGLView.h */,
-				FCDC2FDE15ED0BCC00F8A14A /* NSGLView.m */,
+				FCDC2FDD15ED0BCC00F8A14A /* SimpleGLView.h */,
+				FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */,
 				FCDC2FDF15ED0BCC00F8A14A /* Renderer.h */,
 				FCDC2FE015ED0BCC00F8A14A /* Renderer.m */,
 				FCDC2FE115ED0BCC00F8A14A /* timing.c */,
@@ -124,7 +121,10 @@
 				FCDC2FD815ED0BAE00F8A14A /* Kinect.m */,
 				FCDC2FCC15ED0B8F00F8A14A /* AppDelegate.h */,
 				FCDC2FCD15ED0B8F00F8A14A /* AppDelegate.m */,
+				FCDC2FDB15ED0BCC00F8A14A /* MainWindowController.h */,
+				FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */,
 				FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */,
+				FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */,
 				FCDC2FC115ED0B8F00F8A14A /* Supporting Files */,
 			);
 			path = Kinector;
@@ -219,7 +219,7 @@
 				FCDC2FCE15ED0B8F00F8A14A /* AppDelegate.m in Sources */,
 				FCDC2FD915ED0BAE00F8A14A /* Kinect.m in Sources */,
 				FCDC2FE415ED0BCC00F8A14A /* MainWindowController.m in Sources */,
-				FCDC2FE515ED0BCC00F8A14A /* NSGLView.m in Sources */,
+				FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */,
 				FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */,
 				FCDC2FE715ED0BCC00F8A14A /* timing.c in Sources */,
 			);
@@ -351,6 +351,7 @@
 				FCDC2FD615ED0B8F00F8A14A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

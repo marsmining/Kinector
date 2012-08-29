@@ -1,5 +1,5 @@
 //
-//  NSGLView.h
+//  SimpleGLView.h
 //  Kinector
 //
 //  Created by foo on 8/26/12.
@@ -10,12 +10,18 @@
 #import <QuartzCore/CVDisplayLink.h>
 #import "Renderer.h"
 
-@interface NSGLView : NSOpenGLView {
+@interface SimpleGLView : NSOpenGLView {
 
     CVDisplayLinkRef displayLink;
 
 }
 
 @property (nonatomic, strong) Renderer* renderer;
+
+- (void) start;
+
+- (void) stop;
+
+- (BOOL) isRunning;
 
 @end

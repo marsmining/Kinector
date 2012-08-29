@@ -1,21 +1,21 @@
 //
-//  NSGLView.m
+//  SimpleGLView.m
 //  Kinector
 //
 //  Created by foo on 8/26/12.
 //  Copyright (c) 2012 Ockham Solutions GmbH. All rights reserved.
 //
 
-#import "NSGLView.h"
+#import "SimpleGLView.h"
 
-@interface NSGLView (PrivateMethods)
+@interface SimpleGLView (PrivateMethods)
 
 - (void) initGL;
 - (void) drawView;
 
 @end
 
-@implementation NSGLView
+@implementation SimpleGLView
 
 @synthesize renderer = _renderer;
 
@@ -24,14 +24,38 @@
 	return kCVReturnSuccess;
 }
 
+//
 // renderer output callback function
+//
 static CVReturn dlc(CVDisplayLinkRef displayLink, const CVTimeStamp* now,
                     const CVTimeStamp* outputTime, CVOptionFlags flagsIn,
-                    CVOptionFlags* flagsOut, void* displayLinkContext) {
+                    CVOptionFlags* flagsOut, void* displayLinkContext)
+{
     NSLog(@"callback invoked..");
     
-    CVReturn result = [(__bridge NSGLView*) displayLinkContext getFrameForTime:outputTime];
+    // use the context passed in to call obj-c instance method
+    CVReturn result = [(__bridge SimpleGLView*) displayLinkContext getFrameForTime:outputTime];
     return result;
+}
+
+- (void) start
+{
+    NSLog(@"start");
+    
+    // start the link
+	CVDisplayLinkStart(displayLink);
+}
+
+- (void) stop
+{
+    NSLog(@"stop");
+    
+    // stop the link
+    CVDisplayLinkStop(displayLink);
+}
+
+- (BOOL) isRunning {
+    return CVDisplayLinkIsRunning(displayLink);
 }
 
 - (void) awakeFromNib {
@@ -70,9 +94,6 @@ static CVReturn dlc(CVDisplayLinkRef displayLink, const CVTimeStamp* now,
 	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
 	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
 	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
-	
-	// Activate the display link
-	CVDisplayLinkStart(displayLink);
 }
 
 - (void) initGL

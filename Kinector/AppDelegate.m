@@ -8,26 +8,10 @@
 
 #import "AppDelegate.h"
 
-#import "Kinect.h"
-
-@interface AppDelegate()
-
-@property (nonatomic, strong) Kinect *kinect;
-
-@end
-
 @implementation AppDelegate
 
 // view controller
 @synthesize controller = _controller;
-
-// kinect object
-// @synthesize kinect = _kinect;
-//
-//BOOL kinectContextIsOpen = NO;
-//BOOL kinectDepthIsOpen = NO;
-
-// methods
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     NSLog(@"starting app..");
@@ -41,26 +25,12 @@
     // display window
     [self.controller.window makeKeyAndOrderFront:self];
     
-    // create and init kinect object
-    
-    //    self.kinect = [[Kinect alloc] init];
-    //    kinectContextIsOpen = [self.kinect openDevice];
-    //    kinectDepthIsOpen = [self.kinect openDepth];
-    
-    // create draw loop
-    
 }
 
 - (void) applicationWillTerminate:(NSNotification *)notification {
     NSLog(@"terminating app..");
     
-//    if (kinectDepthIsOpen) {
-//        NSLog(@"result from closing depth is: %d", [self.kinect closeDepth]);
-//    }
-//    
-//    if (kinectContextIsOpen) {
-//        NSLog(@"result from closing device is: %d", [self.kinect closeDevice]);
-//    }
+    [self.controller stop];
 }
 
 @end

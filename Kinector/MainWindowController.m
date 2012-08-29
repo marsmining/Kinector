@@ -8,37 +8,72 @@
 
 #import "MainWindowController.h"
 
-@interface MainWindowController ()
-
-@end
-
+/**
+ * Coordinates all objects lifecycle and activities.
+ */
 @implementation MainWindowController
 
-- (id)init
+// our gl view
+@synthesize glView = _glView;
+
+// kinect instance
+@synthesize kinect = _kinect;
+
+BOOL kinectContextIsOpen = NO;
+BOOL kinectDepthIsOpen = NO;
+
+- (id) init
 {
     self = [super initWithWindowNibName:@"MainWindow"];
     
-    if (self) {
-        // init code
+    if (self) {        
+        
+        // create and init kinect object
+        
+        //    self.kinect = [[Kinect alloc] init];
+        //    kinectContextIsOpen = [self.kinect openDevice];
+        //    kinectDepthIsOpen = [self.kinect openDepth];
+        
+        // create draw loop
     }
     return self;
 }
 
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
-
-- (void)windowDidLoad
+- (void) windowDidLoad
 {
     [super windowDidLoad];
+
+    // code
+}
+
+- (void) stop
+{
+    NSLog(@"stop");
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    if (kinectDepthIsOpen) {
+        NSLog(@"result from closing depth is: %d", [self.kinect closeDepth]);
+    }
+    
+    if (kinectContextIsOpen) {
+        NSLog(@"result from closing device is: %d", [self.kinect closeDevice]);
+    }
+}
+
+- (IBAction) toggleDisplay:(NSButton *)sender {
+    NSLog(@"toggleDisplay");
+    
+    if (self.glView.isRunning) {
+        [self.glView stop];
+        sender.title = @"Start OpenGL";
+    } else {
+        [self.glView start];
+        sender.title = @"Stop OpenGL";
+    }
+}
+
+- (IBAction)toggleKinect:(NSButton *)sender {
+    NSLog(@"toggleKinect");
+
 }
 
 @end
