@@ -14,7 +14,7 @@
 @synthesize controller = _controller;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    NSLog(@"starting app..");
+    NSLog(@"AppDelegate - applicationDidFinishLaunching");
     
     // create our window controller
     self.controller = [[MainWindowController alloc] init];
@@ -28,7 +28,7 @@
 }
 
 - (void) applicationWillTerminate:(NSNotification *)notification {
-    NSLog(@"terminating app..");
+    NSLog(@"AppDelegate - applicationWillTerminate");
     
     [self.controller stop];
 }

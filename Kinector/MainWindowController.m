@@ -59,14 +59,14 @@
 
 - (void) stop
 {
-    NSLog(@"stop");
+    NSLog(@"MainWindowController - stop");
     
     [self.kinect stop];
     [self.glView stop];
 }
 
 - (IBAction) toggleDisplay:(NSButton *)sender {
-    NSLog(@"toggleDisplay");
+    NSLog(@"MainWindowController - toggleDisplay");
     
     if (self.glView.isRunning) {
         [self.glView stop];
@@ -78,7 +78,7 @@
 }
 
 - (IBAction)toggleKinect:(NSButton *)sender {
-    NSLog(@"toggleKinect");
+    NSLog(@"MainWindowController - toggleKinect");
 
     if (self.kinect.isRunning) {
         [self.kinect stop];

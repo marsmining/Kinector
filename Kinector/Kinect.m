@@ -7,6 +7,7 @@
 //
 
 #import "Kinect.h"
+#import "timing.h"
 #import <libfreenect/libfreenect.h>
 
 // global to comp unit
@@ -29,7 +30,7 @@ void logcb(freenect_context *ctx, freenect_loglevel level, const char *msg) {
 }
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
-    NSLog(@"Kinect - depth callback..");
+    NSLog(@"Kinect - depth_cb - fps: %3.1f", timtick());
 
     int i;
     
@@ -106,7 +107,6 @@ BOOL kinectDepthIsOpen = NO;
     
     while (!die) {
         int rez = freenect_process_events(f_ctx);
-        NSLog(@"result of p/e: %d", rez);
         if (rez < 0) break;
     }
 }
@@ -130,6 +130,7 @@ BOOL kinectDepthIsOpen = NO;
 - (BOOL) openDepth {
     NSLog(@"Kinect - openDepth");
     
+    timinit();
     die = 0;
     
     // allocate memory (freed in close depth)
