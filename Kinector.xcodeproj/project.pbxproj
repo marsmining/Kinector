@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC2365C915EFC6BD00E45589 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2365C815EFC6BD00E45589 /* Timer.m */; };
 		FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */; };
 		FCDC2FC515ED0B8F00F8A14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */; };
 		FCDC2FC715ED0B8F00F8A14A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FC615ED0B8F00F8A14A /* main.m */; };
@@ -18,13 +19,14 @@
 		FCDC2FE415ED0BCC00F8A14A /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */; };
 		FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */; };
 		FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FE015ED0BCC00F8A14A /* Renderer.m */; };
-		FCDC2FE715ED0BCC00F8A14A /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FE115ED0BCC00F8A14A /* timing.c */; };
 		FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */; };
 		FCDC2FEC15ED159D00F8A14A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */; };
 		FCDC2FEE15ED15B300F8A14A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC2365C715EFC6BD00E45589 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		FC2365C815EFC6BD00E45589 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		FCABF65C15EE89A500584A4F /* KinectorProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectorProtocols.h; sourceTree = "<group>"; };
 		FCDC2FB615ED0B8F00F8A14A /* Kinector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -48,8 +50,6 @@
 		FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleGLView.m; sourceTree = "<group>"; };
 		FCDC2FDF15ED0BCC00F8A14A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		FCDC2FE015ED0BCC00F8A14A /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
-		FCDC2FE115ED0BCC00F8A14A /* timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
-		FCDC2FE215ED0BCC00F8A14A /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.0.1.2.dylib; path = /usr/local/lib/libfreenect.0.1.2.dylib; sourceTree = "<absolute>"; };
 		FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -116,8 +116,8 @@
 				FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */,
 				FCDC2FDF15ED0BCC00F8A14A /* Renderer.h */,
 				FCDC2FE015ED0BCC00F8A14A /* Renderer.m */,
-				FCDC2FE115ED0BCC00F8A14A /* timing.c */,
-				FCDC2FE215ED0BCC00F8A14A /* timing.h */,
+				FC2365C715EFC6BD00E45589 /* Timer.h */,
+				FC2365C815EFC6BD00E45589 /* Timer.m */,
 				FCDC2FD715ED0BAE00F8A14A /* Kinect.h */,
 				FCDC2FD815ED0BAE00F8A14A /* Kinect.m */,
 				FCDC2FDB15ED0BCC00F8A14A /* MainWindowController.h */,
@@ -223,7 +223,7 @@
 				FCDC2FE415ED0BCC00F8A14A /* MainWindowController.m in Sources */,
 				FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */,
 				FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */,
-				FCDC2FE715ED0BCC00F8A14A /* timing.c in Sources */,
+				FC2365C915EFC6BD00E45589 /* Timer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

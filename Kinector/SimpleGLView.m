@@ -10,7 +10,6 @@
 
 @interface SimpleGLView ()
 
-- (void) initGL;
 - (void) drawView;
 
 @end
@@ -96,42 +95,24 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
 - (void) prepareOpenGL {
     NSLog(@"SimpleGLView - prepareOpenGL");
 
+    GLint swapInt = 1;
+
 	[super prepareOpenGL];
-	
-	// Make all the OpenGL calls to setup rendering
-	//  and build the necessary rendering objects
-	[self initGL];
-	
-	// Create a display link capable of being used with all active displays
-	CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);
-	
-	// Set the renderer output callback function
+    
+	[[self openGLContext] makeCurrentContext];
+	[[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+    
+	CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);	
 	CVDisplayLinkSetOutputCallback(displayLink, &dlc, (__bridge void *)(self));
-	
-	// Set the display link for the current renderer
-	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
+    CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
 	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
 	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
 }
 
-- (void) initGL
-{
-	// Make this openGL context current to the thread
-	// (i.e. all openGL on this thread calls will go to this context)
-	[[self openGLContext] makeCurrentContext];
-	
-	// Synchronize buffer swaps with vertical refresh rate
-	GLint swapInt = 1;
-	[[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
-}
-
-- (void) reshape
-{
+- (void) reshape {
+    
 	[super reshape];
-	
-	// We draw on a secondary thread through the display link
-	// When resizing the view, -reshape is called automatically on the main thread
-	// Add a mutex around to avoid the threads accessing the context simultaneously when resizing
+
 	CGLLockContext([[self openGLContext] CGLContextObj]);
 	
 	NSRect rect = [self bounds];

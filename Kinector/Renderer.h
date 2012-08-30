@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <OpenGL/OpenGL.h>
 #import "KinectorProtocols.h"
+#import "Timer.h"
 
-@interface Renderer : NSObject <RenderDelegate>
+@interface Renderer : NSObject <RenderDelegate> {
+    Timer *timer;
+}
 
 - (id) initWithDelegate:(id)adel;
 

@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Timer.h"
 
-@interface Kinect : NSObject
+@interface Kinect : NSObject {
+    Timer *timer;
+}
 
 - (void) start;
 

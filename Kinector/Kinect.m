@@ -7,10 +7,11 @@
 //
 
 #import "Kinect.h"
-#import "timing.h"
 #import <libfreenect/libfreenect.h>
 
 // global to comp unit
+
+void *refToSelf;
 
 volatile int die = 0;
 
@@ -30,7 +31,7 @@ void logcb(freenect_context *ctx, freenect_loglevel level, const char *msg) {
 }
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
-    NSLog(@"Kinect - depth_cb - fps: %3.1f", timtick());
+    NSLog(@"Kinect - depth_cb - fps: %3.1f", [refToSelf timtick]);
 
     int i;
     
@@ -198,6 +199,13 @@ BOOL kinectDepthIsOpen = NO;
     }
     
     return YES;
+}
+
+- (id) init {
+    self = [super init];
+    timer = [[Timer alloc] init];
+    refToSelf = (__bridge void *)(self);
+    return self;
 }
 
 @end

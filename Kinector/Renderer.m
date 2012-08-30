@@ -7,7 +7,6 @@
 //
 
 #import "Renderer.h"
-#import "timing.h"
 
 @implementation Renderer
 
@@ -40,7 +39,7 @@ static GLfloat colors[] = {
     
     // fps calculation
     
-    NSLog(@"Renderer - render - fps: %3.1f", timtick());
+    NSLog(@"Renderer - render - fps: %3.1f", [timer timtick]);
     
     // render
     
@@ -93,10 +92,11 @@ static GLfloat colors[] = {
 	if((self = [super init])) {
         
         self.delegate = adel;
+
+        timer = [[Timer alloc] init];
         
-        timinit();
-        
-		NSLog(@"%s %s", glGetString(GL_RENDERER), glGetString(GL_VERSION));
+		NSLog(@"Renderer - initWithDelegate - %s %s",
+              glGetString(GL_RENDERER), glGetString(GL_VERSION));
 
 		// Depth test will always be enabled
 		// glEnable(GL_DEPTH_TEST);
