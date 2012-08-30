@@ -19,8 +19,8 @@
 
 - (void) stop;
 
-- (IBAction)toggleDisplay:(NSButton *)sender;
+- (IBAction) toggleDisplay:(NSButton *)sender;
 
-- (IBAction)toggleKinect:(NSButton *)sender;
+- (IBAction) toggleKinect:(NSButton *)sender;
 
 @end

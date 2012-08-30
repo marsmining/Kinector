@@ -17,11 +17,7 @@
 @synthesize kinect = _kinect;
 @synthesize renderer = _renderer;
 
-- (uint8_t *) getDepthBuffer {
-    NSLog(@"MainWindowController - getDepthBuffer");
-    
-    return [self.kinect getDepthBuffer];
-}
+// getters w/lazy init
 
 - (Kinect *) kinect {
     if (!_kinect)
@@ -33,6 +29,14 @@
     if (!_renderer)
         _renderer = [[Renderer alloc] initWithDelegate:self];
     return _renderer;
+}
+
+// buffer delegate
+
+- (uint8_t *) getDepthBuffer {
+    NSLog(@"MainWindowController - getDepthBuffer");
+    
+    return [self.kinect getDepthBuffer];
 }
 
 - (id) init

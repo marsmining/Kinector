@@ -25,11 +25,11 @@ int depthCallbacks = 0;
 //
 
 void logcb(freenect_context *ctx, freenect_loglevel level, const char *msg) {
-    NSLog(@"recieved msg: %s", msg);
+    NSLog(@"Kinect - recieved msg: %s", msg);
 }
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
-    NSLog(@"depth callback..");
+    NSLog(@"Kinect - depth callback..");
 
     int i;
     
@@ -91,20 +91,18 @@ BOOL kinectDepthIsOpen = NO;
 
 - (void) stop {
     NSLog(@"Kinect - stop");
-
-    die = 1;
     
     if (kinectDepthIsOpen) {
-        NSLog(@"result from closing depth is: %d", [self closeDepth]);
+        NSLog(@"Kinect - result from closing depth is: %d", [self closeDepth]);
     }
     
     if (kinectContextIsOpen) {
-        NSLog(@"result from closing device is: %d", [self closeDevice]);
+        NSLog(@"Kinect - result from closing device is: %d", [self closeDevice]);
     }
 }
 
 - (void) depthLoop {
-    NSLog(@"depthLoop");
+    NSLog(@"Kinect - depthLoop");
     
     while (!die) {
         int rez = freenect_process_events(f_ctx);
@@ -114,7 +112,9 @@ BOOL kinectDepthIsOpen = NO;
 }
 
 - (BOOL) closeDepth {
-    NSLog(@"closeDepth");
+    NSLog(@"Kinect - closeDepth");
+    
+    die = 1;
     
     // stop depth
     freenect_stop_depth(f_dev);
@@ -128,7 +128,9 @@ BOOL kinectDepthIsOpen = NO;
 }
 
 - (BOOL) openDepth {
-    NSLog(@"openDepth");
+    NSLog(@"Kinect - openDepth");
+    
+    die = 0;
     
     // allocate memory (freed in close depth)
     depth_mid = (uint8_t*)malloc(640*480*3);
@@ -148,7 +150,7 @@ BOOL kinectDepthIsOpen = NO;
 }
 
 - (BOOL) closeDevice {
-    NSLog(@"closeDevice");
+    NSLog(@"Kinect - closeDevice");
     
     // close device and context
     freenect_close_device(f_dev);
@@ -160,7 +162,7 @@ BOOL kinectDepthIsOpen = NO;
 }
 
 - (BOOL) openDevice {
-    NSLog(@"openDevice");
+    NSLog(@"Kinect - openDevice");
 
     if (freenect_init(&f_ctx, NULL) < 0) {
         NSLog(@"freenect_init() failed");

@@ -62,8 +62,8 @@
 			files = (
 				FCDC2FEE15ED15B300F8A14A /* CoreVideo.framework in Frameworks */,
 				FCDC2FEC15ED159D00F8A14A /* OpenGL.framework in Frameworks */,
-				FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */,
 				FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */,
+				FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
