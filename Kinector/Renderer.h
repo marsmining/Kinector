@@ -11,9 +11,7 @@
 #import "KinectorProtocols.h"
 #import "Timer.h"
 
-@interface Renderer : NSObject <RenderDelegate> {
-    Timer *timer;
-}
+@interface Renderer : NSObject <RenderDelegate>
 
 - (id) initWithDelegate:(id)adel;
 

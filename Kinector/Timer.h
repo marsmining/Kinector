@@ -11,15 +11,7 @@
 
 #define MAXSAMPLES 100
 
-@interface Timer : NSObject {
-    
-    int tickindex;
-    uint64_t ticksum;
-    uint64_t ticklist[MAXSAMPLES];
-    uint64_t lastclock;
-    mach_timebase_info_data_t info;
-    
-}
+@interface Timer : NSObject
 
 - (double) timtick;
 

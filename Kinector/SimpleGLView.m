@@ -36,7 +36,7 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
                     CVOptionFlags* flagsOut,
                     void* displayLinkContext)
 {
-    NSLog(@"callback invoked..");
+    NSLog(@"SimpleGLView - dlc");
     
     // use the context passed in to call obj-c instance method
     CVReturn result = [(__bridge SimpleGLView*) displayLinkContext getFrameForTime:outputTime];

@@ -8,6 +8,18 @@
 
 #import "Timer.h"
 
+@interface Timer() {
+    @private
+    
+    int tickindex;
+    uint64_t ticksum;
+    uint64_t ticklist[MAXSAMPLES];
+    uint64_t lastclock;
+    mach_timebase_info_data_t info;
+}
+
+@end
+
 @implementation Timer
 
 /**
@@ -32,6 +44,7 @@
     uint64_t curr = mach_absolute_time();
     uint64_t diff = curr - lastclock;
     lastclock = curr;
+    
     double avg = [self calcAverageTick:diff];
     const double elapsed = avg * (double)info.numer / (double)info.denom;
     return 1.0f / (elapsed / 1000000000);
@@ -57,7 +70,5 @@
     
     return self;
 }
-
-
 
 @end

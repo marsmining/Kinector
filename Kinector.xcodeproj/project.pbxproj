@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC2365C915EFC6BD00E45589 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2365C815EFC6BD00E45589 /* Timer.m */; };
+		FC2365CC15EFE05100E45589 /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = FC2365CA15EFE05100E45589 /* timing.c */; };
 		FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */; };
 		FCDC2FC515ED0B8F00F8A14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */; };
 		FCDC2FC715ED0B8F00F8A14A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FC615ED0B8F00F8A14A /* main.m */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		FC2365C715EFC6BD00E45589 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		FC2365C815EFC6BD00E45589 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		FC2365CA15EFE05100E45589 /* timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
+		FC2365CB15EFE05100E45589 /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		FCABF65C15EE89A500584A4F /* KinectorProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectorProtocols.h; sourceTree = "<group>"; };
 		FCDC2FB615ED0B8F00F8A14A /* Kinector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -127,6 +130,8 @@
 				FCDC2FCF15ED0B8F00F8A14A /* MainMenu.xib */,
 				FCDC2FDA15ED0BCC00F8A14A /* MainWindow.xib */,
 				FCABF65C15EE89A500584A4F /* KinectorProtocols.h */,
+				FC2365CA15EFE05100E45589 /* timing.c */,
+				FC2365CB15EFE05100E45589 /* timing.h */,
 				FCDC2FC115ED0B8F00F8A14A /* Supporting Files */,
 			);
 			path = Kinector;
@@ -224,6 +229,7 @@
 				FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */,
 				FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */,
 				FC2365C915EFC6BD00E45589 /* Timer.m in Sources */,
+				FC2365CC15EFE05100E45589 /* timing.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

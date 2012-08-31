@@ -8,27 +8,17 @@
 
 #import "Renderer.h"
 
+@interface Renderer() {
+    @private
+    
+    Timer *timer;
+    GLuint _width;
+    GLuint _height;
+    GLuint _tex;
+}
+@end
+
 @implementation Renderer
-
-GLuint _width = 0;
-GLuint _height = 0;
-GLuint _tex;
-
-static GLint vertices[] = {
-    25, 25,
-    100, 325,
-    175, 25,
-    175, 325,
-    250, 25,
-    325, 325};
-
-static GLfloat colors[] = {
-    1.0, 0.2, 0.2,
-    0.2, 0.2, 1.0,
-    0.8, 1.0, 0.2,
-    0.75, 0.75, 0.75,
-    0.35, 0.35, 0.35,
-    0.5, 0.5, 0.5};
 
 @synthesize delegate = _delegate;
 
@@ -66,22 +56,6 @@ static GLfloat colors[] = {
     glVertex3f( 600.0, 20.0, 0.0);
     glVertex3f( 550.0, 120.0, 0.0);
     glEnd();
-    
-    // point stuff
-    glEnable(GL_POINT_SMOOTH);
-    glPointSize(10.0f);
-    
-    // line stuff
-    glLineWidth(3.0f);
-    
-    glEnableClientState(GL_COLOR_ARRAY);
-    glColorPointer(3, GL_FLOAT, 0, colors);
-    
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(2, GL_INT, 0, vertices);
-    
-    size_t size = sizeof(vertices) / sizeof(GLint);
-    glDrawArrays(GL_POINTS, 0, size / 2);
     
     glFlush();
 
