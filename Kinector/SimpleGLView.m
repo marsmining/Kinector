@@ -8,7 +8,10 @@
 
 #import "SimpleGLView.h"
 
-@interface SimpleGLView ()
+@interface SimpleGLView () {
+
+    CVDisplayLinkRef displayLink;
+}
 
 - (void) drawView;
 
@@ -78,12 +81,10 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
 - (void) awakeFromNib {
     NSLog(@"SimpleGLView - awakeFromNib");
     
-    NSOpenGLPixelFormatAttribute attrs[] = {
-        // setup attrs here, none for now
-	};
-	
+    NSOpenGLPixelFormatAttribute attrs[] = {};
+    
 	NSOpenGLPixelFormat *pf = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
-	
+
 	if (!pf) NSLog(@"No OpenGL pixel format");
     
     NSOpenGLContext* ctx = [[NSOpenGLContext alloc] initWithFormat:pf shareContext:nil];
@@ -107,6 +108,8 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
     CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
 	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
 	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
+    
+    [self.renderer prepare];
 }
 
 - (void) reshape {
@@ -132,6 +135,7 @@ static CVReturn dlc(CVDisplayLinkRef displayLink,
 	CGLLockContext([[self openGLContext] CGLContextObj]);
 
 	[self.renderer render];
+    
     	
 	CGLFlushDrawable([[self openGLContext] CGLContextObj]);
 	CGLUnlockContext([[self openGLContext] CGLContextObj]);

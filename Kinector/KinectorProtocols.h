@@ -10,6 +10,8 @@
 
 @protocol RenderDelegate <NSObject>
 
+- (void) prepare;
+
 - (void) render;
 
 - (void) resizeWithWidth:(GLuint)width AndHeight:(GLuint)height;

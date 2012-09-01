@@ -11,9 +11,14 @@
 #import "KinectorProtocols.h"
 #import "Timer.h"
 
+#define INITIAL_WIDTH 640
+#define INITIAL_HEIGHT 480
+
 @interface Renderer : NSObject <RenderDelegate>
 
 - (id) initWithDelegate:(id)adel;
+
+- (void) prepare;
 
 - (void) render;
 

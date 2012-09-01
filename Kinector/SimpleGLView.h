@@ -10,10 +10,7 @@
 #import <QuartzCore/CVDisplayLink.h>
 #import "KinectorProtocols.h"
 
-@interface SimpleGLView : NSOpenGLView {
-
-    CVDisplayLinkRef displayLink;
-}
+@interface SimpleGLView : NSOpenGLView
 
 @property (nonatomic, strong) id <RenderDelegate> renderer;
 

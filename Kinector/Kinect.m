@@ -16,10 +16,8 @@ volatile int die = 0;
 
 uint8_t *depth_mid;
 
-freenect_context *f_ctx;
 freenect_device *f_dev;
-
-int depthCallbacks = 0;
+freenect_context *f_ctx;
 
 struct ktimeinfo *mytimerctx;
 
@@ -36,26 +34,58 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
 
     int i;
     
-    uint16_t *depth = (uint16_t*) v_depth;
+    uint16_t *depth = (uint16_t*) v_depth;    
     
     for (i=0; i<640*480; i++) {
         
-        // clamp 11-bit depth value to 0-255
-        int dc = (int) (depth[i] / 2048.0 * 255.0);
+        // range 0 to 10,000
+        uint16_t millis = depth[i];
         
+        // convert to 0 to 1 float
+        float scaled = millis / 10000.0f;
+        
+        if (scaled > 1.0f) scaled = 1.0f;
+                
+        uint8_t dc = scaled * 255;
+        
+        if (millis < 500) {
+            dc = 25;
+        } else if (millis < 1000) {
+            dc = 50;
+        } else if (millis < 1500) {
+            dc = 75;
+        } else if (millis < 2000) {
+            dc = 100;
+        } else if (millis < 2500) {
+            dc = 125;
+        } else if (millis < 3000) {
+            dc = 150;
+        } else if (millis < 3500) {
+            dc = 175;
+        } else if (millis < 4000) {
+            dc = 200;
+        } else if (millis < 4500) {
+            dc = 225;
+        } else if (millis < 5000) {
+            dc = 250;
+        } else {
+            dc = 255;
+        }
+                
         depth_mid[3*i+0] = dc;
         depth_mid[3*i+1] = dc;
         depth_mid[3*i+2] = dc;
     }
 }
 
-BOOL kinectContextIsOpen = NO;
-BOOL kinectDepthIsOpen = NO;
 
 /**
  * Interface
  */
-@interface Kinect()
+@interface Kinect() {
+    BOOL kinectContextIsOpen;
+    BOOL kinectDepthIsOpen;
+}
 
 - (BOOL) openDevice;
 
@@ -80,9 +110,11 @@ BOOL kinectDepthIsOpen = NO;
  * Get pointer to depth buffer.
  */
 - (uint8_t *) getDepthBuffer {
-    NSLog(@"Kinect - unlockDepthBuffer");
+    NSLog(@"Kinect - getDepthBuffer");
     
-    return depth_mid;
+    if (kinectDepthIsOpen) return depth_mid;
+    
+    return 0;
 }
 
 - (void) start {
@@ -140,7 +172,7 @@ BOOL kinectDepthIsOpen = NO;
     depth_mid = (uint8_t*)malloc(640*480*3);
 
     freenect_set_depth_callback(f_dev, &depth_cb);
-    freenect_set_depth_mode(f_dev, freenect_find_depth_mode(FREENECT_RESOLUTION_MEDIUM, FREENECT_DEPTH_11BIT));
+    freenect_set_depth_mode(f_dev, freenect_find_depth_mode(FREENECT_RESOLUTION_MEDIUM, FREENECT_DEPTH_MM));
 
     freenect_start_depth(f_dev);
     
@@ -201,6 +233,19 @@ BOOL kinectDepthIsOpen = NO;
     }
     
     return YES;
+}
+
+- (id) init {
+    
+    self = [super init];
+    
+    if (self) {
+
+        kinectContextIsOpen = NO;
+        kinectDepthIsOpen = NO;
+    }
+    
+    return self;
 }
 
 @end
