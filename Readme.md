@@ -46,6 +46,10 @@ If we plot the array, to visualize like a function, we get:
 
 ![](http://dl.dropboxusercontent.com/u/58390955/gamma-01.jpg)
 
+Math is not my strong suit, but I interpret this as normalizing the
+range 0 to 2047 to 0 to 1. Then scaling with an exponent of 3 and a
+constant `6 * 6 * 256`.
+
 ## Screenshot
 
 ![](http://dl.dropbox.com/u/58390955/kinector.jpg)
