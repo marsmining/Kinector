@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC2365C915EFC6BD00E45589 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2365C815EFC6BD00E45589 /* Timer.m */; };
 		FC2365CC15EFE05100E45589 /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = FC2365CA15EFE05100E45589 /* timing.c */; };
+		FC67A03917DC4DD900097C17 /* libfreenect.0.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC67A03817DC4DD900097C17 /* libfreenect.0.2.0.dylib */; };
 		FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */; };
 		FCDC2FC515ED0B8F00F8A14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDC2FC315ED0B8F00F8A14A /* InfoPlist.strings */; };
 		FCDC2FC715ED0B8F00F8A14A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FC615ED0B8F00F8A14A /* main.m */; };
@@ -20,7 +21,6 @@
 		FCDC2FE415ED0BCC00F8A14A /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDC15ED0BCC00F8A14A /* MainWindowController.m */; };
 		FCDC2FE515ED0BCC00F8A14A /* SimpleGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */; };
 		FCDC2FE615ED0BCC00F8A14A /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDC2FE015ED0BCC00F8A14A /* Renderer.m */; };
-		FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */; };
 		FCDC2FEC15ED159D00F8A14A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */; };
 		FCDC2FEE15ED15B300F8A14A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +30,7 @@
 		FC2365C815EFC6BD00E45589 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		FC2365CA15EFE05100E45589 /* timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
 		FC2365CB15EFE05100E45589 /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		FC67A03817DC4DD900097C17 /* libfreenect.0.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.0.2.0.dylib; path = /usr/local/lib/libfreenect.0.2.0.dylib; sourceTree = "<absolute>"; };
 		FCABF65C15EE89A500584A4F /* KinectorProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectorProtocols.h; sourceTree = "<group>"; };
 		FCDC2FB615ED0B8F00F8A14A /* Kinector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDC2FBA15ED0B8F00F8A14A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -53,7 +54,6 @@
 		FCDC2FDE15ED0BCC00F8A14A /* SimpleGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleGLView.m; sourceTree = "<group>"; };
 		FCDC2FDF15ED0BCC00F8A14A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		FCDC2FE015ED0BCC00F8A14A /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
-		FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect.0.1.2.dylib; path = /usr/local/lib/libfreenect.0.1.2.dylib; sourceTree = "<absolute>"; };
 		FCDC2FEB15ED159D00F8A14A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		FCDC2FED15ED15B300F8A14A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -66,7 +66,7 @@
 				FCDC2FEE15ED15B300F8A14A /* CoreVideo.framework in Frameworks */,
 				FCDC2FEC15ED159D00F8A14A /* OpenGL.framework in Frameworks */,
 				FCDC2FBB15ED0B8F00F8A14A /* Cocoa.framework in Frameworks */,
-				FCDC2FE915ED0C0900F8A14A /* libfreenect.0.1.2.dylib in Frameworks */,
+				FC67A03917DC4DD900097C17 /* libfreenect.0.2.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 		FCDC2FEA15ED156300F8A14A /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				FCDC2FE815ED0C0900F8A14A /* libfreenect.0.1.2.dylib */,
+				FC67A03817DC4DD900097C17 /* libfreenect.0.2.0.dylib */,
 			);
 			name = libs;
 			sourceTree = "<group>";
