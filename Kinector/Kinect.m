@@ -14,6 +14,8 @@
 
 volatile int die = 0;
 
+uint16_t t_gamma[2048];
+
 uint8_t *depth_mid;
 
 freenect_device *f_dev;
@@ -31,50 +33,50 @@ void logcb(freenect_context *ctx, freenect_loglevel level, const char *msg) {
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
     NSLog(@"Kinect - depth_cb - fps: %3.1f", timtick(mytimerctx));
-
-    int i;
     
     uint16_t *depth = (uint16_t*) v_depth;    
     
-    for (i=0; i<640*480; i++) {
+    for (int i=0; i<640*480; i++) {
+        int pval = t_gamma[depth[i]];
+        int lb = pval & 0xff;
         
-        // range 0 to 10,000
-        uint16_t millis = depth[i];
-        
-        // convert to 0 to 1 float
-        float scaled = millis / 10000.0f;
-        
-        if (scaled > 1.0f) scaled = 1.0f;
-                
-        uint8_t dc = scaled * 255;
-        
-        if (millis < 500) {
-            dc = 25;
-        } else if (millis < 1000) {
-            dc = 50;
-        } else if (millis < 1500) {
-            dc = 75;
-        } else if (millis < 2000) {
-            dc = 100;
-        } else if (millis < 2500) {
-            dc = 125;
-        } else if (millis < 3000) {
-            dc = 150;
-        } else if (millis < 3500) {
-            dc = 175;
-        } else if (millis < 4000) {
-            dc = 200;
-        } else if (millis < 4500) {
-            dc = 225;
-        } else if (millis < 5000) {
-            dc = 250;
-        } else {
-            dc = 255;
+        switch (pval>>8) {
+            case 0:
+                depth_mid[3*i+0] = 255;
+                depth_mid[3*i+1] = 255-lb;
+                depth_mid[3*i+2] = 255-lb;
+                break;
+            case 1:
+                depth_mid[3*i+0] = 255;
+                depth_mid[3*i+1] = lb;
+                depth_mid[3*i+2] = 0;
+                break;
+            case 2:
+                depth_mid[3*i+0] = 255-lb;
+                depth_mid[3*i+1] = 255;
+                depth_mid[3*i+2] = 0;
+                break;
+            case 3:
+                depth_mid[3*i+0] = 0;
+                depth_mid[3*i+1] = 255;
+                depth_mid[3*i+2] = lb;
+                break;
+            case 4:
+                depth_mid[3*i+0] = 0;
+                depth_mid[3*i+1] = 255-lb;
+                depth_mid[3*i+2] = 255;
+                break;
+            case 5:
+                depth_mid[3*i+0] = 0;
+                depth_mid[3*i+1] = 0;
+                depth_mid[3*i+2] = 255-lb;
+                break;
+            default:
+                depth_mid[3*i+0] = 0;
+                depth_mid[3*i+1] = 0;
+                depth_mid[3*i+2] = 0;
+                break;
         }
-                
-        depth_mid[3*i+0] = dc;
-        depth_mid[3*i+1] = dc;
-        depth_mid[3*i+2] = dc;
     }
 }
 
@@ -168,11 +170,19 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
     die = 0;
     mytimerctx = timinit();
     
+    // init gamma array
+    for (int i=0; i < 2048; i++) {
+        float v = i / 2048.0;
+        v = powf(v, 3) * 6;
+        t_gamma[i] = v * 6 * 256;
+    }
+
     // allocate memory (freed in close depth)
     depth_mid = (uint8_t*)malloc(640*480*3);
 
     freenect_set_depth_callback(f_dev, &depth_cb);
-    freenect_set_depth_mode(f_dev, freenect_find_depth_mode(FREENECT_RESOLUTION_MEDIUM, FREENECT_DEPTH_MM));
+    // freenect_set_depth_mode(f_dev, freenect_find_depth_mode(FREENECT_RESOLUTION_MEDIUM, FREENECT_DEPTH_MM));
+    freenect_set_depth_mode(f_dev, freenect_find_depth_mode(FREENECT_RESOLUTION_MEDIUM, FREENECT_DEPTH_11BIT));
 
     freenect_start_depth(f_dev);
     
