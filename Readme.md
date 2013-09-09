@@ -48,7 +48,13 @@ If we plot the array, to visualize like a function, we get:
 
 Math is not my strong suit, but I interpret this as normalizing the
 range 0 to 2047 to 0 to 1. Then scaling with an exponent of 3 and a
-constant `6 * 6 * 256`.
+constant `6 * 6 * 256`. So why choose these values?
+
+Next, the value looked up in the gamma array, is bitwise and'd
+(masked) with `0xff`, which means we're sort of chopping off the
+significant bits beyond 8. If we were to plot it, we get:
+
+![](http://dl.dropboxusercontent.com/u/58390955/gamma-00.jpg)
 
 ## Screenshot
 
