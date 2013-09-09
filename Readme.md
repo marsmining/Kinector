@@ -1,6 +1,6 @@
 # Kinector
 
-Just a start at Kinect hacking..
+Work in progress. Mac app which uses Kinect.
 
 ## Notes
 
@@ -28,18 +28,18 @@ image with a color range like this:
 
 _the red dot is just some opengl drawing, ignore that_
 
-Ok so, in this mode, the depth camera is giving us 11-bit (2048
-values). The first thing which is done to each sample, is a lookup in
+Ok so, in this mode, the depth camera is giving us 11-bit (2048)
+values. The first step done for each sample, is a lookup in
 the `t_gamma` array, of length 2048. The array is initialized like so:
 
 ```c
-    // init gamma array
-    for (int i=0; i < 2048; i++) {
-        float v = i / 2048.0;
-        
-        v = powf(v, 3) * 6;
-        t_gamma[i] = v * 6 * 256;
-    }
+// init gamma array
+for (int i=0; i < 2048; i++) {
+    float v = i / 2048.0;
+    
+    v = powf(v, 3) * 6;
+    t_gamma[i] = v * 6 * 256;
+}
 ```
 
 If we plot the array, to visualize like a function, we get:
