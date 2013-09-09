@@ -56,10 +56,6 @@ significant bits beyond 8. If we were to plot it, we get:
 
 ![](http://dl.dropboxusercontent.com/u/58390955/gamma-00.jpg)
 
-## Screenshot
-
-![](http://dl.dropbox.com/u/58390955/kinector.jpg)
-
 ### License
 
 Copyright © 2013
