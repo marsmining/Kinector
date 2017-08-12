@@ -24,7 +24,7 @@ freenect_set_depth_mode(f_dev, freenect_find_depth_mode(
 And if we use the routine from the `glview.c` linked above, we get an
 image with a color range like this:
 
-![](http://dl.dropboxusercontent.com/u/58390955/gamma-04.jpg)
+![](http://clubctrl.com/gamma-04.jpg)
 
 _the red dot is just some opengl drawing, ignore that_
 
@@ -44,7 +44,7 @@ for (int i=0; i < 2048; i++) {
 
 If we plot the array, to visualize like a function, we get:
 
-![](http://dl.dropboxusercontent.com/u/58390955/gamma-01.jpg)
+![](http://clubctrl.com/gamma-01.jpg)
 
 Math is not my strong suit, but I interpret this as normalizing the
 range 0 to 2047 to 0 to 1. Then scaling with an exponent of 3 and a
@@ -54,7 +54,7 @@ Next, the value looked up in the gamma array, is bitwise and'd
 (masked) with `0xff`, which means we're sort of chopping off the
 significant bits beyond 8. If we were to plot it, we get:
 
-![](http://dl.dropboxusercontent.com/u/58390955/gamma-00.jpg)
+![](http://clubctrl.com/gamma-00.jpg)
 
 ### License
 
