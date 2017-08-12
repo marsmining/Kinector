@@ -12,7 +12,7 @@ sense of the code which translates the depth buffer value to some rgb
 value for display. Visualizing depth values could be done a million
 ways. Initially, I just scaled the value to 8-bit for grayscale. But I
 was intrigued by the logic in
-[this example code](https://github.com/OpenKinect/libfreenect/blob/master/examples/glview.c#L290-L340).
+[this example code](https://github.com/OpenKinect/libfreenect/blob/4d2fede2202c48469aa2300234906d171b7dd7d0/examples/glview.c#L358-L398).
 
 First off, if you initialize the depth camera like so:
 
